@@ -1,0 +1,234 @@
+/* ===== JOURNEY PAGE ===== */
+
+/* the main container. It is NOT called .wrap because .wrap has a fixed height in style.css */
+.journey {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 6% 40px;
+  font-family: "Chakra Petch", "Segoe UI", sans-serif;
+  font-size: 16px;
+  color: #cfd6e0;            /* light grey-blue, readable on the dark background */
+}
+.journey p {
+  line-height: 1.7;
+}
+
+/* ---------- TOP: text + slideshow side by side ---------- */
+.journey-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);   /* text takes the rest, slideshow max 420px */
+  gap: 48px;
+  align-items: center;
+}
+.journey h1 {
+  margin: 0 0 16px;
+  font-family: "Chakra Petch", "Segoe UI", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+}
+.journey-text p {
+  margin: 0 0 22px;
+}
+
+/* team list: a gold line on the left of each team instead of a box */
+.teams {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+.teams li {
+  margin: 0;
+  padding-left: 14px;
+  border-left: 3px solid #f5b730;
+  line-height: 1.4;
+}
+.teams strong {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* ---------- SLIDESHOW BOX ---------- */
+.slide-frame {
+  border: 2px solid #00BFFF;                                 /* the blue line */
+  border-radius: 28px;                                       /* curved edges */
+  overflow: hidden;                                          /* cuts the photo to the curved corners */
+  box-shadow: 0 0 22px #00BFFF88, 0 0 60px #00BFFF33;        /* the blue glow: a tight one + a wide soft one */
+}
+/* #slide is written with .journey .slide-frame in front so it beats the old
+   "#slide { width: 420px }" rule in style.css */
+.journey .slide-frame #slide {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;       /* every photo gets the same shape, so the box never jumps in size */
+  object-fit: cover;         /* crops the photo to fill the shape instead of stretching it */
+}
+
+/* ---------- STATS ROW ---------- */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 0;
+  margin: 56px 0;
+  padding: 22px 0;
+  border-top: 1px solid #263B54;
+  border-bottom: 1px solid #263B54;
+}
+.stats div {
+  flex: 1 1 160px;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: #9fb0c3;
+}
+.stats div + div {
+  border-left: 1px solid #263B54;   /* thin line between neighbours */
+}
+.stats strong {
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #f5b730;
+}
+
+/* ---------- GALLERY ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.journey .gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+/* ---------- MILESTONES BOX ---------- */
+.milestones {
+  margin-top: 56px;
+  padding: 40px;
+  border: 1px solid #263B54;
+  border-radius: 24px;
+  /* two backgrounds stacked: a dark see-through layer on top of the AERO8 photo.
+     The dark layer keeps the text readable. Lower the 0.82 to show more of the photo. */
+  background:
+    linear-gradient(rgba(5, 10, 20, 0.82), rgba(5, 10, 20, 0.82)),
+    url(images/AERO8.jpeg) center / cover no-repeat;
+}
+.milestones h2 {
+  margin: 0 0 28px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* ---------- TIMELINE ---------- */
+/* the vertical line is just the left border of .timeline */
+.timeline {
+  margin: 0;
+  padding-left: 28px;
+  border-left: 2px solid #1f4a6e;
+}
+.season {
+  position: relative;        /* so the dot below can be placed relative to this season */
+  margin-bottom: 34px;
+}
+.season:last-child {
+  margin-bottom: 0;
+}
+/* the dot on the line: a small circle pushed left, onto the line */
+.season::before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #00E5FF;
+  box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.2);   /* a soft ring around the dot */
+}
+.season h3 {
+  margin: 0 0 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #f5b730;
+}
+.season ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.season li {
+  margin: 0 0 16px;
+  line-height: 1.45;
+}
+.season li:last-child {
+  margin-bottom: 0;
+}
+/* each entry has up to 3 lines: event, result, and extra info */
+.event {
+  display: block;
+  font-weight: 600;
+  color: #ffffff;
+}
+.result {
+  display: block;
+  color: #00E5FF;
+}
+.meta {
+  display: block;
+  font-size: 13px;
+  color: #9fb0c3;
+}
+.milestones .more {
+  margin: 28px 0 0;
+  color: #9fb0c3;
+}
+
+.journey .footer {
+  margin: 56px 0 0;
+  font-size: 12px;
+  color: #8a97a8;
+}
+
+/* ---------- SMALLER SCREENS ---------- */
+@media (max-width: 800px) {
+  .journey-top {
+    grid-template-columns: 1fr;       /* stack: text and slideshow in one column */
+    gap: 32px;
+  }
+  .slide-frame {
+    order: -1;                        /* slideshow goes first on phones */
+  }
+  .stats div {
+    flex: 1 1 45%;
+  }
+  .stats div + div {
+    border-left: none;
+  }
+}
+@media (max-width: 560px) {
+  .journey h1 {
+    font-size: 32px;
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+  .milestones {
+    padding: 28px 20px;
+  }
+}

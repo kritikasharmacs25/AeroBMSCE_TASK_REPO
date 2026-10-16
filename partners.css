@@ -1,0 +1,348 @@
+/* ===== PARTNERS PAGE ===== */
+
+/* main container. Not called .wrap, because .wrap has a fixed height in style.css */
+.partners {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 6% 40px;
+  font-family: "Chakra Petch", "Segoe UI", sans-serif;
+  font-size: 16px;
+  color: #cfd6e0;
+}
+
+/* basic text rules for the whole page.
+   Later rules that style a <p> or <li> are written with two classes
+   (like .partners .lead) so they beat this general rule. */
+.partners p {
+  margin: 0 0 16px;
+  line-height: 1.7;
+}
+.partners ul {
+  list-style: none;      /* we draw our own markers where we want them */
+  margin: 0;
+  padding: 0;
+}
+.partners li {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.partners h1 {
+  margin: 0;
+  font-family: "Chakra Petch", "Segoe UI", sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #ffffff;
+}
+.partners h2 {
+  margin: 0 0 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+}
+.partners .lead {
+  max-width: 680px;
+  margin: 0 0 28px;
+  color: #9fb0c3;
+}
+
+/* every section is a .block, with the same space above it */
+.block {
+  margin-top: 72px;
+}
+.block.first {
+  margin-top: 36px;
+}
+
+/* ---------- COMPETITIONS: rows split by thin lines ---------- */
+.schedule {
+  border-top: 1px solid #263B54;
+}
+.schedule li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #263B54;
+}
+.schedule strong {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+}
+.schedule span {
+  font-size: 14px;
+  text-align: right;
+  color: #9fb0c3;
+}
+
+/* ---------- POINTS: title + one line, with a line on top ---------- */
+.points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));   /* as many columns as fit */
+  gap: 28px 32px;
+}
+.points-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));              /* R&D list: always 2 columns */
+}
+.points li {
+  padding-top: 14px;
+  border-top: 2px solid #1f4a6e;
+}
+.points strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+}
+.points span {
+  font-size: 15px;
+  color: #9fb0c3;
+}
+/* the confidential project stands out with a dashed gold line */
+.points .restricted {
+  border-top: 2px dashed #f5b730;
+}
+.points .restricted strong {
+  color: #f5b730;
+}
+
+/* ---------- STATUS: two big statements split by a line ---------- */
+.status {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 20px;
+  border-top: 1px solid #263B54;
+  border-bottom: 1px solid #263B54;
+}
+.status > div {
+  padding: 24px 28px 24px 0;
+  line-height: 1.6;
+}
+.status > div + div {
+  padding-left: 28px;
+  border-left: 1px solid #263B54;
+}
+.status strong {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #f5b730;
+}
+
+/* ---------- TIERS: the colourful part ---------- */
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+/* --tier is a CSS variable: each card sets its own colour,
+   and the top line, title and dots all read it with var(--tier) */
+.tier {
+  --tier: #00E5FF;
+  padding: 26px 26px 28px;
+  background: rgba(19, 31, 51, 0.75);
+  border: 1px solid #263B54;
+  border-top: 3px solid var(--tier);
+  border-radius: 18px;
+}
+.tier-platinum  { --tier: #e5eef7; }
+.tier-gold      { --tier: #f5b730; }
+.tier-silver    { --tier: #9aa7b5; }
+.tier-technical { --tier: #00E5FF; }
+
+.tier-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.tier-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.tier h3 {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--tier);
+}
+.partners .tier-sub {
+  margin: 2px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #9fb0c3;
+}
+.tier li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 9px;
+  font-size: 15px;
+}
+.tier li:last-child {
+  margin-bottom: 0;
+}
+/* the little dot in front of each benefit, in the tier colour */
+.tier li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tier);
+}
+
+/* ---------- OUTCOMES: list with check marks ---------- */
+.outcomes li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 14px;
+}
+.outcomes li::before {
+  content: "\2713";          /* the check mark character */
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: #00E5FF;
+}
+.outcomes strong {
+  color: #f5b730;
+}
+
+/* ---------- LOGO WALL ---------- */
+.logo-group h3 {
+  margin: 28px 0 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #9fb0c3;
+}
+.logo-wall {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+/* each logo sits on a white tile, so dark logos stay visible on the dark page */
+.logo-tile {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 76px;
+  padding: 12px 18px;
+  background:black;
+  border-radius: 12px;
+  
+}
+.logo-tile img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;       /* fits the logo inside the tile without squashing it */
+}
+
+/* ---------- CONTACT BAND ---------- */
+.contact-band {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 72px;
+  padding: 36px 40px;
+  background: rgba(19, 31, 51, 0.75);
+  border: 1px solid #263B54;
+  border-radius: 24px;
+}
+.contact-band h2 {
+  margin: 0 0 6px;
+}
+.contact-band p {
+  margin: 0 0 18px;
+}
+.mail-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid #00E5FF;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #00E5FF;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.mail-btn:hover {
+  background: #00E5FF;
+  color: #08111f;
+}
+.mail-btn:focus-visible {
+  outline: 2px solid #00E5FF;
+  outline-offset: 3px;
+}
+.cad-tile {
+  flex-shrink: 0;
+  width: 200px;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 14px;
+}
+.cad-tile img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.partners .footer {
+  margin: 56px 0 0;
+  font-size: 12px;
+  color: #8a97a8;
+}
+
+/* ---------- SMALLER SCREENS ---------- */
+@media (max-width: 800px) {
+  .tiers,
+  .points-two,
+  .status {
+    grid-template-columns: 1fr;       /* everything stacks in one column */
+  }
+  .status > div + div {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid #263B54;
+  }
+  .status > div {
+    padding-right: 0;
+  }
+  .schedule li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .schedule span {
+    text-align: left;
+  }
+}
+@media (max-width: 560px) {
+  .partners h1 {
+    font-size: 32px;
+  }
+  .partners h2 {
+    font-size: 24px;
+  }
+  .contact-band {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 22px;
+  }
+}
